@@ -12,7 +12,8 @@ Zbiory danych dla kwiatów (5.26 GB) i ptaków (1.87 GB) w formacie HDF5 dostęp
 Katalogi:
 - results/birds_cls_test
 - results/flowers_cls_test
-- results_demo/original_images<br/>
+- results_demo/original_images
+
 zawierają pliki _init_, które są jedynie pystymi plikami. Stworzenie ich ma na celu utrzymanie struktury katalogów niezbędnej do działania programu.
 
 ## Lista zadań
