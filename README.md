@@ -8,6 +8,13 @@ Powyższe repozytrium natomiast bazowane jest na artykule [Generative Adversaria
 ## Zbiory danych
 Zbiory danych dla kwiatów (5.26 GB) i ptaków (1.87 GB) w formacie HDF5 dostępne na _Google Drive_ (link tylko na prośbę).
 
+## Puste pliki
+Katalogi:
+- results/birds_cls_test
+- results/flowers_cls_test
+- results_demo/original_images
+zawierają pliki _init_, które są jedynie pystymi plikami. Stworzenie ich ma na celu utrzymanie struktury katalogów niezbędnej do działania programu.
+
 ## Lista zadań
 - [x] Przeniesienie projektu z _BitBucket_ na _GitHub_
 - [x] Przejrzenie i  zrozumienie części kodu
