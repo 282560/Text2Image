@@ -2,7 +2,7 @@
 Repozytorium zawierające skrypty, czyli część praktyczną pracy magisterskiej.
 
 ## Źrodło
-Temat zaczerpnięty i rozwijany na bazie [Text to Image Synthesis Synthesis using Generative Adversarial Networks - Rakshith-Manandi](https://github.com/Rakshith-Manandi/text-to-image-using-GAN).
+Temat zaczerpnięty i rozwijany na bazie [Text to Image Synthesis Synthesis using Generative Adversarial Networks - Rakshith-Manandi](https://github.com/Rakshith-Manandi/text-to-image-using-GAN).<br/>
 Powyższe repozytrium natomiast bazowane jest na artykule [Generative Adversarial Text to Image Synthesis](https://arxiv.org/abs/1605.05396).
 
 ## Zbiory danych
