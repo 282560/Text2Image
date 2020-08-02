@@ -1,27 +1,6 @@
-
-# coding: utf-8
-
-# In[1]:
-
-
-# import sys
-# #sys.path.insert(0, "/datasets/home/23/223/rmanandi/text-to-image-using-GAN/")
-# import nbimporter
-
-
-# In[2]:
-
-
 import torch
 import torch.nn as nn
-from torch.autograd import Variable
-import numpy as np
 import utils
-import pdb
-
-
-# In[3]:
-
 
 class generator(nn.Module):
     def __init__(self):
@@ -70,10 +49,6 @@ class generator(nn.Module):
         output = self.netG(latent_vector)
 
         return output
-
-
-# In[4]:
-
 
 class discriminator(nn.Module):
     def __init__(self):

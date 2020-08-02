@@ -1,31 +1,6 @@
-
-# coding: utf-8
-
-# In[6]:
-
-
-# import sys
-# sys.path.insert(0, "/datasets/home/30/930/dmajumde/text-to-image-using-GAN/")
-
-
-# In[7]:
-
-
-# import nbimporter
-
-
-# In[8]:
-
-
 import torch
 import torch.nn as nn
-from torch.autograd import Variable
-import numpy as np
 import utils
-import pdb
-
-# In[4]:
-
 
 class gan_factory(object):
 
@@ -81,16 +56,11 @@ class generator(nn.Module):
 
 
     def forward(self, embed_vector, z):
-
         projected_embed = self.projection(embed_vector).unsqueeze(2).unsqueeze(3)
         latent_vector = torch.cat([projected_embed, z], 1)
         output = self.netG(latent_vector)
 
         return output
-
-
-# In[4]:
-
 
 class discriminator(nn.Module):
     def __init__(self):

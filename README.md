@@ -16,11 +16,9 @@ Katalogi:
 
 zawierają pliki _init_, które są jedynie pystymi plikami. Stworzenie ich ma na celu utrzymanie struktury katalogów niezbędnej do działania programu.
 
-## Lista zadań
-- [x] Przeniesienie projektu z _BitBucket_ na _GitHub_
-- [x] Przejrzenie i  zrozumienie części kodu
-- [ ] Uzupełnienie kodu masą komentarzy z komunikatami dla ułatwienia nawigacji podczas korzystania
-- [ ] Trening na zbiorze _COCO_ na platformie _Google Colaboratory_
+## Problemy i lista krokow
+- Analizowanie wszystkich plikow HDF5 (Analyze_all_HDF5_files.py)
+
 
 ## Informacje
 Autor: Cezary Pietruszyński<br/>

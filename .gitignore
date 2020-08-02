@@ -1,3 +1,7 @@
+# Ignore huge components
+COCO Massive Dataset
+checkpoints
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
