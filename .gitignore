@@ -1,5 +1,4 @@
 # Ignore huge components
-COCO Massive Dataset
 datasets/102flowers
 datasets/ee285f-public
 checkpoints
