@@ -1,6 +1,12 @@
 # Ignore huge components
 COCO Massive Dataset
+datasets/102flowers
+datasets/ee285f-public
 checkpoints
+
+# Unrecognized files
+.idea
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -131,6 +137,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-# DHF5 models
-datasets/
