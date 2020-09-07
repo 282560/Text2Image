@@ -1,6 +1,8 @@
 from torch import nn
 import torch
 import os
+import re
+import string
 
 class Concat_embed(nn.Module):
 
@@ -50,3 +52,11 @@ class Logger(object):
         print("Epoch: %d, Iter: %d/%d, d_loss= %f, g_loss= %f, D(X)= %f, D(G(X))= %f" % (
             epoch, iteration, iterationMax, d_loss.data.cpu().mean(), g_loss.data.cpu().mean(), real_score.data.cpu().mean(),
             fake_score.data.cpu().mean()))
+
+def load_folder_list(path=""): # Dodane 05-08-2020 - W ramach przepisywania data_loader.py na txt2image_dataset.py
+    return [os.path.join(path, o) for o in os.listdir(path) if os.path.isdir(os.path.join(path, 0))]
+
+def preprocess_caption(line): # Dodane 05-08-2020 - W ramach przepisywania data_loader.py na txt2image_dataset.py
+    prep_line = re.sub('[%s]' % re.escape(string.punctuation), ' ', line.rstrip())
+    prep_line = prep_line.replace('-', ' ')
+    return prep_line

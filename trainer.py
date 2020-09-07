@@ -1,9 +1,6 @@
 import sys
 sys.path.insert(0, "../text-to-image-using-GAN/models")
 
-import time
-import datetime
-
 import torch
 import yaml
 from torch import nn
@@ -35,12 +32,11 @@ class Trainer(object):
             self.generator.apply(Utils.weights_init)
 
         if dataset == 'birds':
-            self.dataset = Text2ImageDataset(config['birds_dataset_path'], split=split)
+            self.dataset = Text2ImageDataset(config['birds_dataset_path'], split=split) # '...\Text2Image\datasets\ee285f-public\caltech_ucsd_birds\birds.hdf5'
         elif dataset == 'flowers':
-            self.dataset = Text2ImageDataset(config['flowers_dataset_path'], split=split)
+            self.dataset = Text2ImageDataset(config['flowers_dataset_path'], split=split) # '...\Text2Image\datasets\ee285f-public\oxford_flowers\flowers.hdf5'
         else:
             print('Dataset not supported, please select either birds or flowers.')
-            exit()
         
         print('Images = ' + str(len(self.dataset)))
         self.noise_dim = 100
@@ -54,7 +50,7 @@ class Trainer(object):
         self.l1_coef = l1_coef
         self.l2_coef = l2_coef
 
-        self.data_loader = DataLoader(self.dataset, batch_size=self.batch_size, shuffle=True, num_workers=self.num_workers)
+        self.data_loader = DataLoader(self.dataset, batch_size=self.batch_size, shuffle=False, num_workers=self.num_workers) # TODO: shuffle=True - przetasowuje zbior danych w kazdej epoce
 
         self.optimD = torch.optim.Adam(self.discriminator.parameters(), lr=self.lr, betas=(self.beta1, 0.999))
         self.optimG = torch.optim.Adam(self.generator.parameters(), lr=self.lr, betas=(self.beta1, 0.999))
@@ -81,7 +77,7 @@ class Trainer(object):
             print('###########################\nEpoch: ' + str(epoch + 1) + '/' + str(self.num_epochs) + '\n###########################')
             #time_counter = 0
             for sample in self.data_loader:
-                print('Iteration:', iteration, end='\r')
+                print('Sample counter:', iteration, end='\r')
                 #start = time.time()
                 iteration += 1
 
@@ -89,7 +85,7 @@ class Trainer(object):
                 right_embed = sample['right_embed']
                 wrong_images = sample['wrong_images']
 
-                right_images = Variable(right_images.float()).cuda()
+                '''right_images = Variable(right_images.float()).cuda()
                 right_embed = Variable(right_embed.float()).cuda()
                 wrong_images = Variable(wrong_images.float()).cuda()
 
@@ -158,7 +154,7 @@ class Trainer(object):
 
             print('Epoch', epoch, 'complete')
             if (epoch) % 10 == 0:
-                Utils.save_checkpoint(self.discriminator, self.generator, self.checkpoints_path, self.save_path, epoch)
+                Utils.save_checkpoint(self.discriminator, self.generator, self.checkpoints_path, self.save_path, epoch)'''
 
 
     def predict(self):

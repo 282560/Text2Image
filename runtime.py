@@ -1,29 +1,42 @@
 from trainer import Trainer
 import easydict
 
+import os
+from new_dataloader import Text2ImageDataset
+
+'''
+myObject = Text2ImageDataset(datasetFile=os.path.join('datasets', '102flowers'),
+                             imagesDir='102flowers',
+                             textDir='text_c10')
+myObject.__getitem__(idx=6327)
+exit()
+'''
+
+
+'''
 args = easydict.EasyDict({'type': 'gan', 
                         'lr': 0.001,
                         'l1_coef': 50,
                         'l2_coef': 100,
                         'cls': True,
                         'save_path':'./birds_cls_test',
-                        'inference': True, # True - predict, False - train
+                        'inference': False, # True - predict, False - train
                         'pre_trained_disc': 'checkpoints/birds_cls_test/disc_290.pth',
                         'pre_trained_gen': 'checkpoints/birds_cls_test/gen_290.pth',
                         'dataset': 'birds',
                         'split': 0,
                         'batch_size':16,
                         'num_workers':0, # Musi byc 0, aby Windows wspieral multiprocessing.
-                        'epochs':300})
+                        'epochs':2})
+'''
 
-"""
 args = easydict.EasyDict({'type': 'gan', 
                         'lr': 0.001,
                         'l1_coef': 50,
                         'l2_coef': 100,
                         'cls': True,
                         'save_path':'./flowers_cls_test',
-                        'inference': True, # True - predict, False - train
+                        'inference': False, # True - predict, False - train
                         'pre_trained_disc': 'checkpoints/flowers_cls/disc_190.pth',
                         'pre_trained_gen': 'checkpoints/flowers_cls/gen_190.pth',
                         'dataset': 'flowers',
@@ -31,7 +44,6 @@ args = easydict.EasyDict({'type': 'gan',
                         'batch_size':16,
                         'num_workers':0, # Musi byc 0, aby Windows wspieral multiprocessing.
                         'epochs':2})
-"""
 
 trainer = Trainer(type=args.type,
                   dataset=args.dataset,
