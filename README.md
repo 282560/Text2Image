@@ -1,6 +1,6 @@
 # Text2Image - Python
 
-Repozytorium zawierające *projekt bazowy*, czyli ten człon pracy magisterskiej, który odpowiada za trening i testy oraz generowanie modeli.
+Repozytorium zawierające **projekt bazowy**, czyli ten człon pracy magisterskiej, który odpowiada za trening i testy oraz generowanie modeli.
 
 ## Przed przystąpieniem do treningu/testu
 
@@ -37,7 +37,7 @@ Tak więc:
 * `batch_size` – rozmiar paczki danych jakimi będą pobierane próbki.
 * `epochs` – ilość epok.
 
-*Uwaga! Wszystkie wyżej wymienione parametry są parametrami obowiązkowymi.*
+**Uwaga! Wszystkie wyżej wymienione parametry są parametrami obowiązkowymi.**
 
 ## Puste pliki
 
