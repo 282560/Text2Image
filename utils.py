@@ -1,8 +1,9 @@
 from torch import nn
+
+import string
 import torch
 import os
 import re
-import string
 
 class Concat_embed(nn.Module):
 
@@ -11,8 +12,7 @@ class Concat_embed(nn.Module):
         self.projection = nn.Sequential(
             nn.Linear(in_features=embed_dim, out_features=projected_embed_dim),
             nn.BatchNorm1d(num_features=projected_embed_dim),
-            nn.LeakyReLU(negative_slope=0.2, inplace=True)
-            )
+            nn.LeakyReLU(negative_slope=0.2, inplace=True) )
 
     def forward(self, inp, embed):
         projected_embed = self.projection(embed)
@@ -45,18 +45,11 @@ class Utils(object):
             m.weight.data.normal_(1.0, 0.02)
             m.bias.data.fill_(0)
 
-
-class Logger(object):
-
-    def log_iteration_gan(self, epoch, iteration, iterationMax, d_loss, g_loss, real_score, fake_score):
-        print("Epoch: %d, Iter: %d/%d, d_loss= %f, g_loss= %f, D(X)= %f, D(G(X))= %f" % (
-            epoch, iteration, iterationMax, d_loss.data.cpu().mean(), g_loss.data.cpu().mean(), real_score.data.cpu().mean(),
-            fake_score.data.cpu().mean()))
-
-def load_folder_list(path=""): # Dodane 05-08-2020 - W ramach przepisywania data_loader.py na txt2image_dataset.py
+def load_folder_list(path=""):
     return [os.path.join(path, o) for o in os.listdir(path) if os.path.isdir(os.path.join(path, 0))]
 
-def preprocess_caption(line): # Dodane 05-08-2020 - W ramach przepisywania data_loader.py na txt2image_dataset.py
+def preprocess_caption(line):
     prep_line = re.sub('[%s]' % re.escape(string.punctuation), ' ', line.rstrip())
     prep_line = prep_line.replace('-', ' ')
+
     return prep_line

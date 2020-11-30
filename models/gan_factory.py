@@ -1,5 +1,6 @@
-import torch
 import torch.nn as nn
+
+import torch
 import utils
 
 class gan_factory(object):
@@ -29,8 +30,7 @@ class generator(nn.Module):
         self.projection = nn.Sequential(
             nn.Linear(in_features=self.embed_dim, out_features=self.projected_embed_dim),
             nn.BatchNorm1d(num_features=self.projected_embed_dim),
-            nn.LeakyReLU(negative_slope=0.2, inplace=True)
-            )
+            nn.LeakyReLU(negative_slope=0.2, inplace=True) )
 
         self.netG = nn.Sequential(
             nn.ConvTranspose2d(self.latent_dim, self.ngf * 8, 4, 1, 0, bias=False),
@@ -50,9 +50,7 @@ class generator(nn.Module):
             nn.ReLU(True),
             # state size. (ngf) x 32 x 32
             nn.ConvTranspose2d(self.ngf, self.num_channels, 4, 2, 1, bias=False),
-            nn.Tanh()
-             # state size. (num_channels) x 64 x 64
-            )
+            nn.Tanh() ) # state size. (num_channels) x 64 x 64
 
 
     def forward(self, embed_vector, z):
@@ -88,16 +86,14 @@ class discriminator(nn.Module):
             # state size. (ndf*4) x 8 x 8
             nn.Conv2d(self.ndf * 4, self.ndf * 8, 4, 2, 1, bias=False),
             nn.BatchNorm2d(self.ndf * 8),
-            nn.LeakyReLU(0.2, inplace=True),
-        )
+            nn.LeakyReLU(0.2, inplace=True) )
 
         self.projector = utils.Concat_embed(self.embed_dim, self.projected_embed_dim)
 
         self.netD_2 = nn.Sequential(
             # state size. (ndf*8) x 4 x 4
             nn.Conv2d(self.ndf * 8 + self.projected_embed_dim, 1, 4, 1, 0, bias=False),
-            nn.Sigmoid()
-            )
+            nn.Sigmoid() )
 
     def forward(self, inp, embed):
         x_intermediate = self.netD_1(inp)

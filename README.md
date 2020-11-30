@@ -1,25 +1,50 @@
 # Text2Image - Python
-Repozytorium zawierające skrypty, czyli część praktyczną pracy magisterskiej.
 
-## Źrodło
-Temat zaczerpnięty i rozwijany na bazie [Text to Image Synthesis Synthesis using Generative Adversarial Networks - Rakshith-Manandi](https://github.com/Rakshith-Manandi/text-to-image-using-GAN).<br/>
-Powyższe repozytrium natomiast bazowane jest na artykule [Generative Adversarial Text to Image Synthesis](https://arxiv.org/abs/1605.05396).
+Repozytorium zawierające *projekt bazowy*, czyli ten człon pracy magisterskiej, który odpowiada za trening i testy oraz generowanie modeli.
 
-## Zbiory danych
-Zbiory danych dla kwiatów (5.26 GB) i ptaków (1.87 GB) w formacie HDF5 dostępne na _Google Drive_ (link tylko na prośbę).
+## Przed przystąpieniem do treningu/testu
+
+Należy wpierw zamaskować wszystkie inne procesory graficzne (_GPU_), jeżeli maszyna posiada więcej niż jeden. Robi się to po to, by inni użytkownicy również mogli z nich korzystać. Służy do tego komenda:
+```
+set CUDA_VISIBLE_DEVICES={numer karty}
+```
+
+## Instrukcja
+
+Pomoc wyświetla się z katalogu głównego projektu (tam gdzie znajduje się plik `runtime.py`). Wówczas wystarczy wpisać:
+```
+python runtime.py -h
+```
+lub
+```
+python runtime.py --help
+```
+Ale pomoc jest również opisana poniżej.
+Aby poprawnie skorzystać ze skryptu należy wprowadzić komendę:
+```
+python runtime.py {operation} {dataset} {learning_rate} {batch_size} {epochs}
+```
+np.
+```
+python runtime.py train flowers 0.0002 100 1000
+```
+aby uruchomić _trening_ na na zbiorze _kwiatów_, ze stałą uczenia równą _0.0002_, rozmiarem paczki _100_ oraz na czas _1 000_ epok.
+Tak więc:
+
+* `operation` – rodzaj operacji, według której dane będą przetwarzane (możliwe opcje to `train` lub `test`).
+* `dataset` – nazwa zbioru danych (zdefiniowane jest 5 nazw: `flowers`, `birds`, `three_flowers`, `three_birds` oraz `three_fruits`).
+* `learning_rate` – wartość stałej uczenia (wartość rekomendowana przez autorów sieci to `0.0002`).
+* `batch_size` – rozmiar paczki danych jakimi będą pobierane próbki.
+* `epochs` – ilość epok.
+
+*Uwaga! Wszystkie wyżej wymienione parametry są parametrami obowiązkowymi.*
 
 ## Puste pliki
-Katalogi:
-- results/birds_cls_test
-- results/flowers_cls_test
-- results_demo/original_images
 
-zawierają pliki _init_, które są jedynie pystymi plikami. Stworzenie ich ma na celu utrzymanie struktury katalogów niezbędnej do działania programu.
-
-## Problemy i lista krokow
-- Analizowanie wszystkich plikow HDF5 (Analyze_all_HDF5_files.py)
-
+W niektórych katalogach znajdują się puste pliki. Służą one jedynie zachowaniu struktury plików w repozytorium _GitHub_.
 
 ## Informacje
-Autor: Cezary Pietruszyński<br/>
+
+Autor: Cezary Pietruszyński
+
 Promotor: dr Marek Grochowski
