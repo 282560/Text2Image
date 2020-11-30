@@ -41,7 +41,9 @@ Tak więc:
 
 ## Puste pliki
 
-W niektórych katalogach znajdują się puste pliki. Służą one jedynie zachowaniu struktury plików w repozytorium _GitHub_.
+W niektórych katalogach znajdują się puste pliki (_init_). Służą one jedynie zachowaniu struktury plików w repozytorium _GitHub_.
+
+**Uwaga! Po pobraniu repozytorium zalecane jest usunięcie tych plików.**
 
 ## Informacje
 
